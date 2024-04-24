@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "43920810963",
+    "firebase_url": "https://fir-projectunity-20032-default-rtdb.firebaseio.com",
+    "project_id": "fir-projectunity-20032",
+    "storage_bucket": "fir-projectunity-20032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43920810963:android:31a42a3efbbd2fecf68526",
+        "android_client_info": {
+          "package_name": "com.czalad.firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_exUFeL2g3_Lwl5G0C0JLmcE_Ga5dTyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
