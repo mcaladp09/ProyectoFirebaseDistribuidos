@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Firebase.Auth;
+using Firebase.Database;
 
 public class SignUpButton : MonoBehaviour
 {
@@ -12,18 +13,24 @@ public class SignUpButton : MonoBehaviour
     [SerializeField]
     private TMP_InputField _emailInputField;
     [SerializeField]
+    private TMP_InputField _usernameInputField;
+    [SerializeField]
     private TMP_InputField _passwordInputField;
+
+    private DatabaseReference _mDatabaseRef;
 
     private void Reset()
     {
         _signupButton = GetComponent<Button>();
         _emailInputField = GameObject.Find("InputFieldEmail").GetComponent<TMP_InputField>();
+        _usernameInputField = GameObject.Find("InputFieldEmail").GetComponent<TMP_InputField>();
         _passwordInputField = GameObject.Find("InputFieldPassword").GetComponent<TMP_InputField>();
     }
 
     void Start()
     {
         _signupButton.onClick.AddListener(HandleSignupButtonClicked);
+        _mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
     private void HandleSignupButtonClicked() 
@@ -55,6 +62,8 @@ public class SignUpButton : MonoBehaviour
             Firebase.Auth.AuthResult result = signuptask.Result;
             Debug.LogFormat("Firebase user created successfully: {0} ({1})",
                 result.User.DisplayName, result.User.UserId);
+
+            _mDatabaseRef.Child("users").Child(result.User.UserId).Child("username").SetValueAsync(_usernameInputField.text);
         }
     }
 }

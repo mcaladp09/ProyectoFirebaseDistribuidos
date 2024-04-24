@@ -108,7 +108,7 @@ public class Manager : MonoBehaviour
     public void AddClicks()
     {
         TotalClicks++;
-        ClicksTotalText.text = TotalClicks.ToString("0");
+        ClicksTotalText.text = TotalClicks.ToString("Score: 0");
         clickCooldownTimer = 0f;
     }
 }
