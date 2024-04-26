@@ -23,17 +23,17 @@ public class SignUpButton : MonoBehaviour
     {
         _signupButton = GetComponent<Button>();
         _emailInputField = GameObject.Find("InputFieldEmail").GetComponent<TMP_InputField>();
-        _usernameInputField = GameObject.Find("InputFieldEmail").GetComponent<TMP_InputField>();
+        _usernameInputField = GameObject.Find("InputFieldUsername").GetComponent<TMP_InputField>();
         _passwordInputField = GameObject.Find("InputFieldPassword").GetComponent<TMP_InputField>();
     }
 
     void Start()
     {
-        _signupButton.onClick.AddListener(HandleSignupButtonClicked);
+        //_signupButton.onClick.AddListener(HandleSignupButtonClicked);
         _mDatabaseRef = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    private void HandleSignupButtonClicked() 
+    public void HandleSignupButtonClicked() 
     {
         StartCoroutine(RegisterUser());
     }
@@ -44,7 +44,11 @@ public class SignUpButton : MonoBehaviour
 
         var signuptask = auth.CreateUserWithEmailAndPasswordAsync(_emailInputField.text, _passwordInputField.text);
 
+        Debug.Log("Creando user");
+
         yield return new WaitUntil(() => signuptask.IsCompleted);
+
+        Debug.Log("Creando user 2");
 
         if (signuptask.IsCanceled)
         {

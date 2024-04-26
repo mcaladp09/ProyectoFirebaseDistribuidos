@@ -24,10 +24,10 @@ public class LogInButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _loginButton.onClick.AddListener(HandleSignupButtonClicked);
+        _loginButton.onClick.AddListener(HandleLogInButtonClicked);
     }
 
-    private void HandleSignupButtonClicked()
+    private void HandleLogInButtonClicked()
     {
         var auth = FirebaseAuth.DefaultInstance;
         auth.SignInWithEmailAndPasswordAsync(_emailInputField.text, _passwordInputField.text).ContinueWith(task => {
